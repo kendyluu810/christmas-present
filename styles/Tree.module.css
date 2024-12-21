@@ -1,0 +1,162 @@
+/* Container */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/background.svg"); /* Đường dẫn tới file SVG */
+  background-size: cover; /* Đảm bảo background phủ toàn bộ trang */
+  background-position: center; /* Căn giữa background */
+  background-repeat: no-repeat; /* Không lặp lại ảnh */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Cây thông Noel */
+.tree {
+  width: 500px;
+  height: fit-content;
+  object-fit: contain;
+  margin-bottom: 30px;
+}
+
+/* Tuyết rơi */
+.snow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none; /* Đảm bảo tuyết không che các phần tử khác */
+}
+
+/* Hiệu ứng trượt vào */
+.typing {
+  font-size: 2.5rem;
+  font-family: "Courier New", Courier, monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: slideIn 2s ease-out forwards, blink-caret 0.75s step-end infinite;
+  color: #2D79AE; /* Màu chữ đậm cho tiêu đề */
+}
+
+/* Hiệu ứng trượt vào từ trái */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Hiệu ứng nháy con trỏ */
+@keyframes blink-caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Lời chúc */
+.typing2 {
+  font-size: 1.5rem;
+  font-family: "Courier New", Courier, monospace;
+  white-space: normal; /* Cho phép xuống dòng */
+  word-wrap: break-word; /* Ngắt dòng khi văn bản dài */
+  margin-top: 20px;
+  animation: slideIn 2s ease-out forwards, blink-caret 0.75s step-end infinite;
+  color: #2D79AE; /* Màu chữ vàng đậm cho lời chúc */
+}
+
+/* Khoảng cách giữa tiêu đề và lời chúc */
+.typing + .typing2 {
+  margin-top: 20px; /* Khoảng cách giữa tiêu đề và lời chúc */
+}
+
+/* Hiệu ứng tuyết rơi (nếu bạn muốn thêm tuyết động) */
+@keyframes snowflakes {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.snow::before {
+  content: "";
+  position: absolute;
+  background: white;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: snowflakes 10s linear infinite;
+  opacity: 0.7;
+}
+
+.snow::after {
+  content: "";
+  position: absolute;
+  background: white;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: snowflakes 12s linear infinite;
+  opacity: 0.5;
+  animation-delay: 3s;
+}
+
+/* Thiết bị có chiều rộng màn hình dưới 768px (Máy tính bảng và di động) */
+@media (max-width: 768px) {
+  .typing {
+    font-size: 2rem;
+  }
+
+  .typing2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Thiết bị có chiều rộng màn hình dưới 480px (Điện thoại di động) */
+@media (max-width: 480px) {
+  .container {
+    height: auto;
+    padding: 20px;
+  }
+
+  .tree {
+    width: 300px;
+    height: fit-content;
+  }
+
+  .typing {
+    font-size: 1.5rem;
+  }
+
+  .typing2 {
+    font-size: 1rem;
+  }
+
+  .snow::before,
+  .snow::after {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Thiết bị có chiều rộng màn hình từ 1024px trở lên (Máy tính để bàn) */
+@media (min-width: 1024px) {
+  .typing {
+    font-size: 3rem;
+  }
+
+  .typing2 {
+    font-size: 2rem;
+  }
+}
