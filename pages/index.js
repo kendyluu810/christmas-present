@@ -19,7 +19,7 @@ export default function Home() {
           height={400}
         />
       </div>
-      <p>Click the card to see your Christmas tree!</p>
+      <p>Click the card to open!</p>
     </div>
   );
 }
